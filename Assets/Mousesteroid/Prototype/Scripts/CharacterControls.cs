@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PersonalProjects.Mouseteroid.Prototype;
+using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
 {
@@ -7,6 +8,14 @@ public class CharacterControls : MonoBehaviour
 
     private Vector3 mousePosition;
     private Vector3 lookDirection;
+
+    [SerializeField] private WeaponController.WeaponControllerData weaponData;
+    private WeaponController weaponController;
+
+    private void Awake()
+    {
+        weaponController = new WeaponController(weaponData);
+    }
 
     public void FixedUpdate()
     {
@@ -20,6 +29,11 @@ public class CharacterControls : MonoBehaviour
 
         Vector3 moveDirection = GetInput();
         actor.transform.Translate(moveDirection * Time.deltaTime * moveSpeedModifier, Space.World);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            weaponController.Use();
+        }
     }
 
     private Vector3 GetInput()
