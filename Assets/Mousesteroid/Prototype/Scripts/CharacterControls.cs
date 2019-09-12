@@ -48,7 +48,6 @@ public class CharacterControls : MonoBehaviour
     {
         Vector2 mousePos = Input.mousePosition;
         Vector2 relativeMousePos = new Vector2(mousePos.x - (Screen.width/2), mousePos.y - (Screen.height/2));
-        //Debug.Log(""+ relativeMousePos.x+" "+ relativeMousePos.y);
         float angle = Mathf.Atan2(relativeMousePos.y, relativeMousePos.x) * Mathf.Rad2Deg - 90;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         return rotation;
