@@ -30,7 +30,10 @@ namespace PersonalProjects.GameFramework.Saves
         {
             using (MemoryStream stream = new MemoryStream())
             {
-
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(stream, data);
+                byte[] serializedObject = stream.ToArray();
+                fileWriter.Write(savePath, serializedObject);
             }
         }
 
