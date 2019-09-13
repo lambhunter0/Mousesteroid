@@ -2,6 +2,6 @@
 {
     public interface IFileWriter
     {
-
+        void Write( string path, byte[] data);
     }
 }
