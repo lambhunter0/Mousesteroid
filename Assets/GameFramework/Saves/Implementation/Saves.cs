@@ -26,7 +26,12 @@ namespace PersonalProjects.GameFramework.Saves
 
         public void Save(object data)
         {
+            //TODO
+        }
 
+        public void Load(object data)
+        {
+            //TODO
         }
     }
 }
