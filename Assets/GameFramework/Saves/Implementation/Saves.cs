@@ -1,6 +1,8 @@
 ﻿using PersonalProjects.GameFramework.Saves.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace PersonalProjects.GameFramework.Saves
@@ -26,12 +28,20 @@ namespace PersonalProjects.GameFramework.Saves
 
         public void Save(object data)
         {
-            //TODO
+            using (MemoryStream stream = new MemoryStream())
+            {
+
+            }
         }
 
-        public void Load(object data)
+        public T Load<T>(object data) where T: class
         {
-            //TODO
+            using (MemoryStream stream = new MemoryStream(fileReader.Read(savePath)))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                T deserializedObject = binaryFormatter.Deserialize(stream) as T;
+                return deserializedObject;
+            }
         }
     }
 }
